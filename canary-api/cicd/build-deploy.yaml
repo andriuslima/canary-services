@@ -9,10 +9,20 @@ steps:
     entrypoint: 'gradle'
     args: [ 'bootJar' ]
 
-  - name: 'gcr.io/cloud-builders/docker'
+  - name: 'docker:20.10.12'
     dir: 'canary-api'
-    args: [ 'build','--tag', 'gcr.io/$PROJECT_ID/canary-api:latest', 'gcr.io/$PROJECT_ID/canary-api:$SHORT_SHA', '.' ]
+    args: [ 'build',
+            '--tag', 'gcr.io/$PROJECT_ID/canary-api:latest',
+            '--tag', 'gcr.io/$PROJECT_ID/canary-api:$SHORT_SHA',
+            '.' ]
 
-  - name: 'gcr.io/cloud-builders/docker'
+  - name: 'docker:20.10.12'
     dir: 'canary-api'
-    args: [ 'push', 'gcr.io/$PROJECT_ID/canary-api:latest', '--all-tags' ]
+    args: [ 'image', 'push', 'gcr.io/$PROJECT_ID/canary-api', '--all-tags' ]
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:370.0.0'
+    dir: 'canary-api'
+    args: [ 'gcloud', 'run', 'deploy', 'canary-api',
+            '--image', 'gcr.io/$PROJECT_ID/canary-api:$SHORT_SHA',
+            '--region', 'southamerica-west1',
+            '--allow-unauthenticated']
