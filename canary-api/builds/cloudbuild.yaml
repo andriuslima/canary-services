@@ -1,0 +1,15 @@
+steps:
+  - name: 'gradle:7.3.2-jdk11'
+    entrypoint: 'gradle'
+    args: ['bootJar']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '--tag', 'gcr.io/$PROJECT_ID/canary-api:latest', '.' ]
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:370.0.0'
+    args: ['gcloud', 'run', 'deploy', 'canary-api',
+            '--image', 'gcr.io/$PROJECT_ID/canary-api:latest',
+            '--region', 'southamerica-west1',
+            '--allow-unauthenticated' ]
+images:
+  - 'gcr.io/$PROJECT_ID/canary-api:latest'
