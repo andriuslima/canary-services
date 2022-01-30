@@ -1,8 +1,0 @@
-name: build
-description: Build and push docker image
-filename: canary-api/cicd/build.yaml
-github:
-  name: canary-services
-  owner: andriuslima
-  push:
-    branch: main

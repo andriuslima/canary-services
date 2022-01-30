@@ -11,7 +11,8 @@ steps:
 
   - name: 'gcr.io/cloud-builders/docker'
     dir: 'canary-api'
-    args: [ 'build', '--tag', 'gcr.io/$PROJECT_ID/canary-api:latest', '.' ]
+    args: [ 'build','--tag', 'gcr.io/$PROJECT_ID/canary-api:latest', 'gcr.io/$PROJECT_ID/canary-api:$SHORT_SHA', '.' ]
 
-images:
-  - 'gcr.io/$PROJECT_ID/canary-api:latest'
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'canary-api'
+    args: [ 'push', 'gcr.io/$PROJECT_ID/canary-api:latest', '--all-tags' ]
