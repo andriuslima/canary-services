@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+auth:
+  jwt:
+    hmac256:
+      secret: BD2A68BD1F319CB3C3D698F66D651
+
+posterr:
+  post:
+    content:
+      maxLen: 7778
+
+spring:
+  main:
+    banner-mode: off

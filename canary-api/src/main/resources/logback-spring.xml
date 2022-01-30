@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="localAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d %-5p [%.30t] %-30.30c{1} %m%n%ex{full}</pattern>
+        </encoder>
+    </appender>
+
+    <springProfile name="local">
+        <root level="info">
+            <appender-ref ref="localAppender"/>
+        </root>
+    </springProfile>
+    <springProfile name="container">
+        <root level="info">
+            <appender-ref ref="localAppender"/>
+        </root>
+    </springProfile>
+    <springProfile name="it">
+        <root level="info">
+            <appender-ref ref="localAppender"/>
+        </root>
+    </springProfile>
+    <springProfile name="default">
+        <root level="info">
+            <appender-ref ref="localAppender"/>
+        </root>
+    </springProfile>
+</configuration>
