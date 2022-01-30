@@ -1,0 +1,17 @@
+steps:
+  - name: 'gradle:7.3.2-jdk11'
+    dir: 'canary-api'
+    entrypoint: 'gradle'
+    args: [ 'test' ]
+
+  - name: 'gradle:7.3.2-jdk11'
+    dir: 'canary-api'
+    entrypoint: 'gradle'
+    args: [ 'bootJar' ]
+
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'canary-api'
+    args: [ 'build', '--tag', 'gcr.io/$PROJECT_ID/canary-api:latest', '.' ]
+
+images:
+  - 'gcr.io/$PROJECT_ID/canary-api:latest'

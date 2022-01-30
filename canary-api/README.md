@@ -1,2 +1,9 @@
 ### Create cloud build
-- Upload and create a Google Cloud Build: `gcloud builds submit --config builds/cloudbuild.yaml`
+```
+gcloud builds submit --config cicd/build.yaml
+```
+
+### Create cloud build trigger
+```
+gcloud beta builds triggers create github --trigger-config cicd/build-trigger.yaml
+```
