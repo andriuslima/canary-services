@@ -1,9 +1,0 @@
-name: build
-id: canary-api-build
-description: Build, push and deploy image to Cloud Run
-filename: canary-api/cicd/build-deploy.yaml
-github:
-  name: canary-services
-  owner: andriuslima
-  push:
-    branch: main
