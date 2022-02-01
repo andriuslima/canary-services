@@ -2,6 +2,8 @@ name: "Build & Publish Canary Api image"
 on:
   push:
     branches: [main]
+    paths:
+      - "canary-api"
 
 env:
   REGISTRY: ghcr.io
