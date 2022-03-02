@@ -53,7 +53,7 @@ jobs:
 
       - name: "Set up Cloud SDK"
         uses: "google-github-actions/setup-gcloud@v0"
-        run: gcloud config set account canary-gh-actions@canary-project-339802.iam.gserviceaccount.com
+      # run: gcloud config set account canary-gh-actions@canary-project-339802.iam.gserviceaccount.com
 
       - name: "Set up docker credentials for GCR"
         run: gcloud auth configure-docker ${{ env.REGISTRY }} --project ${{ env.PROJECT_ID }} --quiet
