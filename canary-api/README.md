@@ -1,3 +1,3 @@
 # Canary Api
 
-Java: Corretto-11.0.14.9.1
+Java: 11.0.14.9.1 (Corretto)
