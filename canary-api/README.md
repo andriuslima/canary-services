@@ -1,4 +1,3 @@
-Canary Api
-==
+# Canary Api
 
-Java: 11
+Java: Corretto-11.0.14.9.1
