@@ -34,10 +34,10 @@ resource "google_storage_bucket" "logs_bucket" {
 }
 
 resource "google_cloudbuild_trigger" "build-trigger" {
-  project     = var.project
-  name        = "canary-api-deploy"
-  description = "Canary Api deploy pipeline"
-  # included_files  = ["canary-api/**"]
+  project         = var.project
+  name            = "canary-api-deploy"
+  description     = "Canary Api deploy pipeline"
+  included_files  = ["canary-api/**"]
   service_account = "projects/${var.project}/serviceAccounts/${var.sa_email}"
 
   github {

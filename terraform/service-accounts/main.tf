@@ -35,6 +35,12 @@ resource "google_project_iam_member" "project_serviceAccountTokenCreator" {
   member  = "serviceAccount:${google_service_account.sa.email}"
 }
 
+resource "google_project_iam_member" "project_serviceAccountUser" {
+  project = var.project
+  role    = "roles/iam.serviceAccountUser"
+  member  = "serviceAccount:${google_service_account.sa.email}"
+}
+
 output "sa_email" {
   description = "Cloud Build service account email"
   value       = google_service_account.sa.email
