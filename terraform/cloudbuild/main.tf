@@ -5,8 +5,10 @@ variable "project" {
 }
 
 variable "region" {
-  type     = string
-  nullable = false
+  type        = string
+  nullable    = false
+  description = "Region to provision and deploy services"
+  default     = "southamerica-west1"
 }
 
 variable "sa_email" {
