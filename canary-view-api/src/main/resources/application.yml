@@ -1,0 +1,29 @@
+server:
+  port: 8082
+
+auth:
+  jwt:
+    hmac256:
+      secret: BD2A68BD1F319CB3C3D698F66D651
+
+
+canary:
+  domain:
+    event:
+      topic:
+        post-created: PostCreated
+        repost-created: RepostCreated
+        quote-repost-created: QuoteRepostCreated
+
+spring:
+  main:
+    banner-mode: off
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: canary-view
+      enable-auto-commit: false
+    bootstrap-servers: localhost:9092
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/CanaryViewApiDB
