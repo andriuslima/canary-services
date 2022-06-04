@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String
+  posts     Post[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  followers  Follow[] @relation("FollowerToUser")
+  followings Follow[] @relation("FollowingToUser")
+}
+
+model Follow {
+  follower  User     @relation("FollowerToUser", fields: [followerId], references: [id])
+  following User     @relation("FollowingToUser", fields: [followingId], references: [id])
+  createdAt DateTime @default(now())
+
+  followerId  Int
+  followingId Int
+
+  @@unique([followerId, followingId])
+}
+
+model Post {
+  id       Int     @id @default(autoincrement())
+  content  String?
+  author   User    @relation(fields: [authorId], references: [id])
+  parent   Post?   @relation("PostToPost", fields: [parentId], references: [id])
+  children Post[]  @relation("PostToPost")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  authorId Int
+  parentId Int?
+}

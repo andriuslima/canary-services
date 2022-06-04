@@ -8,7 +8,7 @@ import xyz.andriuslima.canaryapi.application.exceptions.BadRequestException;
 @Component
 public class CreateQuoteRepostValidation {
 
-    @Value("${posterr.post.content.maxLen}")
+    @Value("${canary.post.content.maxLen}")
     public Integer maxLen;
 
     public void validate(CreateQuoteRepostCommand command) {

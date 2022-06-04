@@ -12,6 +12,13 @@ services:
       - canary-network
     ports:
       - 8081:8081
+  canary-event-consumer:
+    build: canary-event-consumer/
+    networks:
+      - canary-network
+    environment:
+      DATABASE_URL: postgresql://canary-user:canary-pass@postgre:5432/CanaryDB?schema=public
+      KAFKA_BOOTSTRAP_SEVER: kafka:29092
 networks:
   canary-network:
     external:

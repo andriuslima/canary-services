@@ -28,7 +28,7 @@ public class PostsControllerIntTest {
         RestAssured.port = port;
     }
 
-    @Value("${posterr.post.content.maxLen}")
+    @Value("${canary.post.content.maxLen}")
     int contentMaxLen;
 
     @Test

@@ -7,6 +7,7 @@ import xyz.andriuslima.canaryapi.domain.events.DomainEvent;
 
 @Slf4j
 @Service
+@Profile("it")
 public class LocalNotifier implements EventNotifier {
 
     public void publish(DomainEvent event) {

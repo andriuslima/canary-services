@@ -26,7 +26,7 @@ public class PostsControllerTest {
   CreateQuoteRepostHandler createQuoteRepostHandler;
 
   @InjectMocks
-  private PostsController controller;
+  private PostController controller;
 
   @Test
   void createPostShouldCallProperServices() {

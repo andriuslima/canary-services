@@ -20,7 +20,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/posts")
-public class PostsController {
+public class PostController {
 
     private final CreatePostHandler createPostHandler;
     private final CreateRepostHandler createRepostHandler;

@@ -1,16 +1,26 @@
 server:
-  port: 8080
+  port: 8081
 
 auth:
   jwt:
     hmac256:
       secret: BD2A68BD1F319CB3C3D698F66D651
 
-posterr:
+canary:
   post:
     content:
       maxLen: 7778
+  domain:
+    event:
+      topic: CanaryEventTopic
+      dlt: CanaryEventDLT
 
 spring:
   main:
     banner-mode: off
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      bootstrap-servers: localhost:9092
+    bootstrap-servers: localhost:9092
